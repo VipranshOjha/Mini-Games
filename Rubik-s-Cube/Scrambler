@@ -1,0 +1,55 @@
+import random
+import time
+import pygame
+from OpenGL.GL import *
+from OpenGL.GLU import *
+
+
+class CubeScrambler:
+    def __init__(self, cube_instance):
+        self.cube = cube_instance
+        self.moves = ['x', 'y', 'z']
+        self.indices = [-1, 1]  # Only use the outer layers for scrambling
+        self.directions = [-1, 1]
+
+    def generate_random_move(self):
+        """Generate a random move (axis, layer, direction)"""
+        axis = random.choice(self.moves)
+        index = random.choice(self.indices)
+        direction = random.choice(self.directions)
+        return axis, index, direction
+
+    def scramble(self, num_moves=20):
+        """Perform a series of random moves to scramble the cube"""
+        print("Scrambling cube...")
+
+        # Store moves for possible replay
+        scramble_sequence = []
+
+        for _ in range(num_moves):
+            # Generate a random move
+            axis, index, direction = self.generate_random_move()
+
+            # Apply the move
+            self.cube.start_rotation(axis, index, direction)
+            scramble_sequence.append((axis, index, direction))
+
+            # Wait for animation to complete
+            while self.cube.animating:
+                self.cube.update_animation()
+                glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+                self.cube.draw_cube()
+                pygame.display.flip()
+                pygame.time.wait(16)
+
+                # Process events to keep the window responsive
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        return
+
+            # Small delay between moves
+            pygame.time.wait(100)
+
+        print("Scramble complete!")
+        return scramble_sequence
