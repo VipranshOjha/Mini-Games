@@ -12,4 +12,5 @@ This repository is a collection of classic and simple mini-games implemented usi
 
 * **Rubik's-Cube:** An interactive representation or simulator of the iconic 3D combination puzzle, focusing on logic and manipulation.
 
+
 Dive into each game's subdirectory to find its code, instructions, and any relevant assets.
