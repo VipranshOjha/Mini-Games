@@ -16,9 +16,6 @@ These projects are primarily for **learning**, **practice**, and **demonstrating
 * **🔤 Hangman Game**
   A word-guessing game where players try to guess a hidden word, letter by letter, before a stick figure is "hanged."
 
-* **🧊 Rubik's Cube**
-  An interactive representation or simulator of the iconic 3D combination puzzle, focusing on logic and manipulation.
-
 * **🧩 Sudoku**
   An interactive Sudoku game built with Python and Pygame. Features include puzzle generation, a built-in solver, and real-time solving animations.
 
@@ -44,3 +41,4 @@ These projects are designed to:
 * Learn and apply basic to intermediate programming concepts
 * Explore simple **game development logic**
 * Have fun while coding 🎯
+
